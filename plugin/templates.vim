@@ -16,6 +16,10 @@ if !exists('g:templates_name_prefix')
 	let g:templates_name_prefix = ".vim-template:"
 endif
 
+if !exists('g:templates_global_name_prefix')
+	let g:templates_global_name_prefix = "template:"
+endif
+
 if !exists('g:templates_debug')
 	let g:templates_debug = 0
 endif
@@ -242,7 +246,7 @@ function <SID>TFind(path, name, up)
 	if l:tmpl != ""
 		return l:tmpl
 	else
-		return <SID>TSearch(<SID>NormalizePath(expand(<SID>GetGlobalTemplateDir() . "/")), "template:", a:name, 1)
+		return <SID>TSearch(<SID>NormalizePath(expand(<SID>GetGlobalTemplateDir() . "/")), g:templates_global_name_prefix, a:name, 1)
 	endif
 endfunction
 
